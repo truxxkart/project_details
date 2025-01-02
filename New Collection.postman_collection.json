@@ -4,17 +4,478 @@
 		"name": "New Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "40744525",
-		"_collection_link": "https://truxxapiv1.postman.co/workspace/52a613f8-94b6-4f68-9e8f-679f8fce57b3/collection/40744525-b19d78b9-eef8-4c85-8c2a-fc9dc1044c37?action=share&source=collection_link&creator=40744525"
+		"_collection_link": "https://truxxapiv1.postman.co/workspace/truxxkart_v1~52a613f8-94b6-4f68-9e8f-679f8fce57b3/collection/40744525-b19d78b9-eef8-4c85-8c2a-fc9dc1044c37?action=share&source=collection_link&creator=40744525"
 	},
 	"item": [
 		{
 			"name": "userservice_v1",
 			"item": [
 				{
-					"name": "New Request",
+					"name": "Get User By ID",
 					"request": {
 						"method": "GET",
 						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By Field",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/users/field?field=Email&findBy=saurav@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"users",
+								"field"
+							],
+							"query": [
+								{
+									"key": "field",
+									"value": "Email"
+								},
+								{
+									"key": "findBy",
+									"value": "saurav@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users By Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/users/status?field=Activation&findBy=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"users",
+								"status"
+							],
+							"query": [
+								{
+									"key": "field",
+									"value": "Activation"
+								},
+								{
+									"key": "findBy",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By Role Or Type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/users/role-or-type?field=UserType&findBy=NEW_USER",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"users",
+								"role-or-type"
+							],
+							"query": [
+								{
+									"key": "field",
+									"value": "UserType"
+								},
+								{
+									"key": "findBy",
+									"value": "NEW_USER"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By Creation Date",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/users/creation-date?date=2025-01-01",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"users",
+								"creation-date"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2025-01-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upadet User Field",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/users/update/id/1?field=EMAIL&toBeUpdated=hello@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"users",
+								"update",
+								"id",
+								"1"
+							],
+							"query": [
+								{
+									"key": "field",
+									"value": "EMAIL"
+								},
+								{
+									"key": "toBeUpdated",
+									"value": "hello@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Users Status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/users/update/status/id/1?field=ACTIVATION&toBeUpdated=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"users",
+								"update",
+								"status",
+								"id",
+								"1"
+							],
+							"query": [
+								{
+									"key": "field",
+									"value": "ACTIVATION"
+								},
+								{
+									"key": "toBeUpdated",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products From sellerservice_v1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7000/products"
+					},
+					"response": []
+				},
+				{
+					"name": "Get or Create cart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/cart?userId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"cart"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Carts By Updation Date",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/cart/date?date=2024-12-30",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"cart",
+								"date"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2024-12-30"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddItem To cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\":1,\r\n    \"productVariantId\":9,\r\n    \"productSizeId\":2,\r\n    \"price\":100,\r\n    \"quantity\":1,\r\n    \"discunt\":0,\r\n    \"totalPrice\":100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:7000/cart/1/item"
+					},
+					"response": []
+				},
+				{
+					"name": "update item in cart",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/cart/update/755f85c8-5b2d-4d6d-a350-cc491f6c6865/item/cbeaa055-ef3c-4639-8149-386c982aed34?field=VARIANT&toBeUpdated=2&price=199",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"cart",
+								"update",
+								"755f85c8-5b2d-4d6d-a350-cc491f6c6865",
+								"item",
+								"cbeaa055-ef3c-4639-8149-386c982aed34"
+							],
+							"query": [
+								{
+									"key": "field",
+									"value": "VARIANT"
+								},
+								{
+									"key": "toBeUpdated",
+									"value": "2"
+								},
+								{
+									"key": "price",
+									"value": "199"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update product quantity in cart",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/cart/increment/755f85c8-5b2d-4d6d-a350-cc491f6c6865/item/cbeaa055-ef3c-4639-8149-386c982aed34",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"cart",
+								"increment",
+								"755f85c8-5b2d-4d6d-a350-cc491f6c6865",
+								"item",
+								"cbeaa055-ef3c-4639-8149-386c982aed34"
+							],
+							"query": [
+								{
+									"key": "field",
+									"value": "VARIANT",
+									"disabled": true
+								},
+								{
+									"key": "toBeUpdated",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "199",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete All Item from cart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:7000/cart/remove-all-items/755f85c8-5b2d-4d6d-a350-cc491f6c6865"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete All Item from cart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:7000/cart/remove-all-items/755f85c8-5b2d-4d6d-a350-cc491f6c6865"
+					},
+					"response": []
+				},
+				{
+					"name": "checkout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/orders/checkout?userId=1&addressId=1&paymentId=axyz_12345&paymentMode=UPI",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"orders",
+								"checkout"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								},
+								{
+									"key": "addressId",
+									"value": "1"
+								},
+								{
+									"key": "paymentId",
+									"value": "axyz_12345"
+								},
+								{
+									"key": "paymentMode",
+									"value": "UPI"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get order by creation date",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/orders/creation-date?date=2025-01-02",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"orders",
+								"creation-date"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2025-01-02"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7000/orders/order-id/dbd41947-67cd-473d-a577-491e510ff052"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order By PaymentMode",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/orders/payment-mode?paymentMode=upi",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"orders",
+								"payment-mode"
+							],
+							"query": [
+								{
+									"key": "paymentMode",
+									"value": "upi"
+								}
+							]
+						}
 					},
 					"response": []
 				}
