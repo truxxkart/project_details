@@ -1,0 +1,1218 @@
+{
+	"info": {
+		"_postman_id": "b19d78b9-eef8-4c85-8c2a-fc9dc1044c37",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "40744525",
+		"_collection_link": "https://truxxapiv1.postman.co/workspace/52a613f8-94b6-4f68-9e8f-679f8fce57b3/collection/40744525-b19d78b9-eef8-4c85-8c2a-fc9dc1044c37?action=share&source=collection_link&creator=40744525"
+	},
+	"item": [
+		{
+			"name": "userservice_v1",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "http://localhost:5000/promotions/update/applicable-products?promoCode=FLAT200&productId=5&field=REmove",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/update/applicable-products?promoCode=FLAT200&productId=5&field=REmove",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"update",
+						"applicable-products"
+					],
+					"query": [
+						{
+							"key": "promoCode",
+							"value": "FLAT200"
+						},
+						{
+							"key": "productId",
+							"value": "5"
+						},
+						{
+							"key": "field",
+							"value": "REmove"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/update/applicable-products?promoCode=FLAT200&productId=5&field=ADD",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/update/applicable-products?promoCode=FLAT200&productId=5&field=ADD",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"update",
+						"applicable-products"
+					],
+					"query": [
+						{
+							"key": "promoCode",
+							"value": "FLAT200"
+						},
+						{
+							"key": "productId",
+							"value": "5"
+						},
+						{
+							"key": "field",
+							"value": "ADD"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/update/user-type?promoCode=FLAT200&userType=CONT&field=REMOVE",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/update/user-type?promoCode=FLAT200&userType=CONT&field=REMOVE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"update",
+						"user-type"
+					],
+					"query": [
+						{
+							"key": "promoCode",
+							"value": "FLAT200"
+						},
+						{
+							"key": "userType",
+							"value": "CONT"
+						},
+						{
+							"key": "field",
+							"value": "REMOVE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/update/user-type?promoCode=FLAT200&userType=CONT&field=ADD",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/update/user-type?promoCode=FLAT200&userType=CONT&field=ADD",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"update",
+						"user-type"
+					],
+					"query": [
+						{
+							"key": "promoCode",
+							"value": "FLAT200"
+						},
+						{
+							"key": "userType",
+							"value": "CONT"
+						},
+						{
+							"key": "field",
+							"value": "ADD"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/update/max-use?promoCode=FLAT200&maxUsageOfPromo=200",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/update/max-use?promoCode=FLAT200&maxUsageOfPromo=200",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"update",
+						"max-use"
+					],
+					"query": [
+						{
+							"key": "promoCode",
+							"value": "FLAT200"
+						},
+						{
+							"key": "maxUsageOfPromo",
+							"value": "200"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/update/max-use?promoCode=PER10&maxUsageOfPromo=200",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/update/max-use?promoCode=PER10&maxUsageOfPromo=200",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"update",
+						"max-use"
+					],
+					"query": [
+						{
+							"key": "promoCode",
+							"value": "PER10"
+						},
+						{
+							"key": "maxUsageOfPromo",
+							"value": "200"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/update/promo-code?promoCode=PER10&newPromoCode=FLAT200",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/update/promo-code?promoCode=PER10&newPromoCode=FLAT200",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"update",
+						"promo-code"
+					],
+					"query": [
+						{
+							"key": "promoCode",
+							"value": "PER10"
+						},
+						{
+							"key": "newPromoCode",
+							"value": "FLAT200"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/update/promo-code?promoCode=PER10&newpromoCode=FLAT200",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/update/promo-code?promoCode=PER10&newpromoCode=FLAT200",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"update",
+						"promo-code"
+					],
+					"query": [
+						{
+							"key": "promoCode",
+							"value": "PER10"
+						},
+						{
+							"key": "newpromoCode",
+							"value": "FLAT200"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/update/min-purchase-amount?promoCode=PER10&minPurchaseAmount=1999",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/update/min-purchase-amount?promoCode=PER10&minPurchaseAmount=1999",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"update",
+						"min-purchase-amount"
+					],
+					"query": [
+						{
+							"key": "promoCode",
+							"value": "PER10"
+						},
+						{
+							"key": "minPurchaseAmount",
+							"value": "1999"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/update/min-purchase-amount?promoCode=PER10&minimumPurchaseAmount=1999",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/update/min-purchase-amount?promoCode=PER10&minimumPurchaseAmount=1999",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"update",
+						"min-purchase-amount"
+					],
+					"query": [
+						{
+							"key": "promoCode",
+							"value": "PER10"
+						},
+						{
+							"key": "minimumPurchaseAmount",
+							"value": "1999"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/update/discount-value?promoCode=PER10&discountValue=200",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/update/discount-value?promoCode=PER10&discountValue=200",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"update",
+						"discount-value"
+					],
+					"query": [
+						{
+							"key": "promoCode",
+							"value": "PER10"
+						},
+						{
+							"key": "discountValue",
+							"value": "200"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/update/type?promoCode=PER10&newType=FIXED_AMOUNT",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/update/type?promoCode=PER10&newType=FIXED_AMOUNT",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"update",
+						"type"
+					],
+					"query": [
+						{
+							"key": "promoCode",
+							"value": "PER10"
+						},
+						{
+							"key": "newType",
+							"value": "FIXED_AMOUNT"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/update/type?promoCode=PER10&newTtpe=FIXED_AMOUNT",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/update/type?promoCode=PER10&newTtpe=FIXED_AMOUNT",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"update",
+						"type"
+					],
+					"query": [
+						{
+							"key": "promoCode",
+							"value": "PER10"
+						},
+						{
+							"key": "newTtpe",
+							"value": "FIXED_AMOUNT"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/update/description?promoCode=PER10&newDescription=BEST FLASH DEAL",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/update/description?promoCode=PER10&newDescription=BEST FLASH DEAL",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"update",
+						"description"
+					],
+					"query": [
+						{
+							"key": "promoCode",
+							"value": "PER10"
+						},
+						{
+							"key": "newDescription",
+							"value": "BEST FLASH DEAL"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/update/title?promoCode=PER10&newTitle=FLASH_SALE",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/update/title?promoCode=PER10&newTitle=FLASH_SALE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"update",
+						"title"
+					],
+					"query": [
+						{
+							"key": "promoCode",
+							"value": "PER10"
+						},
+						{
+							"key": "newTitle",
+							"value": "FLASH_SALE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/update/title?promoCode=PER10&newTitle=FLASH_SALE",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/update/title?promoCode=PER10&newTitle=FLASH_SALE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"update",
+						"title"
+					],
+					"query": [
+						{
+							"key": "promoCode",
+							"value": "PER10"
+						},
+						{
+							"key": "newTitle",
+							"value": "FLASH_SALE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/all",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/promotions/all"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/global",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/promotions/global"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/type?type=PERCENTAGE",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/type?type=PERCENTAGE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"type"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "PERCENTAGE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/type?type=perCENTAGE",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/type?type=perCENTAGE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"type"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "perCENTAGE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/ids?field=creatorID&findBy=1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/ids?field=creatorID&findBy=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"ids"
+					],
+					"query": [
+						{
+							"key": "field",
+							"value": "creatorID"
+						},
+						{
+							"key": "findBy",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/ids?field=creatorID&findBy=2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/ids?field=creatorID&findBy=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"ids"
+					],
+					"query": [
+						{
+							"key": "field",
+							"value": "creatorID"
+						},
+						{
+							"key": "findBy",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/ids?field=creatorID&findBy=1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/ids?field=creatorID&findBy=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"ids"
+					],
+					"query": [
+						{
+							"key": "field",
+							"value": "creatorID"
+						},
+						{
+							"key": "findBy",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/ids?field=promoID&findBy=1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/ids?field=promoID&findBy=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"ids"
+					],
+					"query": [
+						{
+							"key": "field",
+							"value": "promoID"
+						},
+						{
+							"key": "findBy",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/by?field=promocode&findBy=per10",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/by?field=promocode&findBy=per10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"by"
+					],
+					"query": [
+						{
+							"key": "field",
+							"value": "promocode"
+						},
+						{
+							"key": "findBy",
+							"value": "per10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/by?field=Title&findBy=festive_sal",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/by?field=Title&findBy=festive_sal",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"by"
+					],
+					"query": [
+						{
+							"key": "field",
+							"value": "Title"
+						},
+						{
+							"key": "findBy",
+							"value": "festive_sal"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/by?field=Title&findBy=festive_sale",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/promotions/by?field=Title&findBy=festive_sale",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"promotions",
+						"by"
+					],
+					"query": [
+						{
+							"key": "field",
+							"value": "Title"
+						},
+						{
+							"key": "findBy",
+							"value": "festive_sale"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/upcoming",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/promotions/upcoming"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/expired",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/promotions/expired"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/active",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/promotions/active"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions/all",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/promotions/all"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/promotions"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/promotions",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"FESTIVE_SALE\",\r\n    \"description\":\"GET BEST FESTIVE DEAL\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\" :10,\r\n    \"promoCode\":\"PER10\",\r\n    \"maxUsageOfPromo\":99,\r\n    \"eligibleUsersType\":[\"NEW_USER\"],\r\n    \"applicableProducts\":[1,2],\r\n    \"startDate\":\"2024-12-31T07:00:00\",\r\n    \"endDate\":\"2024-12-31T07:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/promotions"
+			},
+			"response": []
+		}
+	]
+}
