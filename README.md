@@ -12,3 +12,7 @@ return or cancel policy
 
 order item verification or activation functionality
 
+Product's ProductVariant and ProductSize filtering and sorting (DONE)
+
+Remove price field from product and variant 
+
