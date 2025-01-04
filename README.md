@@ -12,7 +12,7 @@ implement checkout and promoCode implementation(Done)
 
 return or cancel policy add table to get feedback
 
-order item verification or activation functionality
+order item verification or activation functionality(DONE)
 
 Product's ProductVariant and ProductSize filtering and sorting (DONE)
 
