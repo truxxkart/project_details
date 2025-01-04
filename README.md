@@ -2,7 +2,7 @@
 I will provide you with rest of POSTMAN api
 
 
-stock impl for checkout
+stock impl for checkout/cancel/return
 
 disable the COD if he cancels the order for more than 5 times
 
