@@ -10,7 +10,7 @@ if we add the same item in the cart , then it will increase the number of item .
 
 implement checkout and promoCode implementation(Done)
 
-return or cancel policy add table to get feedback
+return or cancel policy add table to get feedback(DONE)
 
 order item verification or activation functionality(DONE)
 
