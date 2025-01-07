@@ -1,4 +1,11 @@
- 
+Service.port
+user-service--8010
+admin-service--8020
+delivery-service--8030
+payment-service--8040
+promotion-service--8050
+seller-service--8060
+
 I will provide you with rest of POSTMAN api
 
 
