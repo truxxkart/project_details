@@ -4,7 +4,7 @@
 		"name": "New Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "40744525",
-		"_collection_link": "https://truxxapiv1.postman.co/workspace/truxxkart_v1~52a613f8-94b6-4f68-9e8f-679f8fce57b3/collection/40744525-b19d78b9-eef8-4c85-8c2a-fc9dc1044c37?action=share&source=collection_link&creator=40744525"
+		"_collection_link": "https://truxxapiv1.postman.co/workspace/52a613f8-94b6-4f68-9e8f-679f8fce57b3/collection/40744525-b19d78b9-eef8-4c85-8c2a-fc9dc1044c37?action=share&source=collection_link&creator=40744525"
 	},
 	"item": [
 		{
@@ -14,7 +14,8 @@
 					"name": "Get User By ID",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "http://localhost:7000/users/id/3"
 					},
 					"response": []
 				},
@@ -22,7 +23,8 @@
 					"name": "Get All Users",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "http://localhost:7000/users"
 					},
 					"response": []
 				},
@@ -222,7 +224,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:7000/cart?userId=1",
+							"raw": "http://localhost:7000/cart?userId=2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -234,7 +236,7 @@
 							"query": [
 								{
 									"key": "userId",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -274,7 +276,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"productId\":1,\r\n    \"productVariantId\":9,\r\n    \"productSizeId\":2,\r\n    \"price\":100,\r\n    \"quantity\":1,\r\n    \"discunt\":0,\r\n    \"totalPrice\":100\r\n}",
+							"raw": "{\r\n    \"productId\":1,\r\n    \"productVariantId\":1,\r\n    \"productSizeId\":3,\r\n    \"price\":199,\r\n    \"quantity\":1,\r\n    \"discunt\":0,\r\n    \"totalPrice\":199\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -386,7 +388,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:7000/orders/checkout?userId=1&addressId=1&paymentId=axyz_12345&paymentMode=UPI",
+							"raw": "http://localhost:7000/orders/checkout?userId=3&addressId=1&paymentId=payment5&paymentMode=UPI&zonalId=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -399,7 +401,7 @@
 							"query": [
 								{
 									"key": "userId",
-									"value": "1"
+									"value": "3"
 								},
 								{
 									"key": "addressId",
@@ -407,11 +409,15 @@
 								},
 								{
 									"key": "paymentId",
-									"value": "axyz_12345"
+									"value": "payment5"
 								},
 								{
 									"key": "paymentMode",
 									"value": "UPI"
+								},
+								{
+									"key": "zonalId",
+									"value": "1"
 								}
 							]
 						}
@@ -458,8 +464,60 @@
 					"request": {
 						"method": "GET",
 						"header": [],
+						"url": "http://localhost:7000/products"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order By Payment Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7000/orders/payment-id/axyz_123451"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7000/users"
+					},
+					"response": []
+				},
+				{
+					"name": "Get or Create cart",
+					"request": {
+						"method": "GET",
+						"header": [],
 						"url": {
-							"raw": "http://localhost:7000/orders/payment-mode?paymentMode=upi",
+							"raw": "http://localhost:7000/cart?userId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"cart"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apply-promo-code",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/orders/apply-promo?promoCode=FLAT20&userId=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -467,15 +525,1778 @@
 							"port": "7000",
 							"path": [
 								"orders",
-								"payment-mode"
+								"apply-promo"
 							],
 							"query": [
 								{
-									"key": "paymentMode",
-									"value": "upi"
+									"key": "promoCode",
+									"value": "FLAT20"
+								},
+								{
+									"key": "userId",
+									"value": "1"
 								}
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "promo-code-check",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/orders/check-promo?promoCode=FLAT30&userId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"orders",
+								"check-promo"
+							],
+							"query": [
+								{
+									"key": "promoCode",
+									"value": "FLAT30"
+								},
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order By Payment Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7000/orders/payment-id/axyz_123451"
+					},
+					"response": []
+				},
+				{
+					"name": "checkout with promo code",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/orders/checkout?userId=1&addressId=1&paymentId=axyz_123451&paymentMode=UPI&promoCode=FLAT30",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"orders",
+								"checkout"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								},
+								{
+									"key": "addressId",
+									"value": "1"
+								},
+								{
+									"key": "paymentId",
+									"value": "axyz_123451"
+								},
+								{
+									"key": "paymentMode",
+									"value": "UPI"
+								},
+								{
+									"key": "promoCode",
+									"value": "FLAT30"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "decrement cart by cartid and itemid both req",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": "http://localhost:7000/cart/decrement/755f85c8-5b2d-4d6d-a350-cc491f6c6865/item/3ce445a4-076f-475b-9899-65c3afecbad6"
+					},
+					"response": []
+				},
+				{
+					"name": "update order status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/order-items/update/status?orderItemId=94637fc6-8011-46a3-b052-01635dfd4deb&status=CANCELLED",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"order-items",
+								"update",
+								"status"
+							],
+							"query": [
+								{
+									"key": "orderItemId",
+									"value": "94637fc6-8011-46a3-b052-01635dfd4deb"
+								},
+								{
+									"key": "status",
+									"value": "CANCELLED"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get roductSize by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7000/product-sizes/1"
+					},
+					"response": []
+				},
+				{
+					"name": "GEt orderitems by status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/order-items/status?status=PENDING",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"order-items",
+								"status"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "PENDING"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all buying pattern",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7000/user-buying-pattern"
+					},
+					"response": []
+				},
+				{
+					"name": "get buying pattern of a zone after date",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/user-buying-pattern/after-date?zonalId=1&date=2025-01-01",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"user-buying-pattern",
+								"after-date"
+							],
+							"query": [
+								{
+									"key": "zonalId",
+									"value": "1"
+								},
+								{
+									"key": "date",
+									"value": "2025-01-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"name\": \"hello1\",\r\n        \"email\": \"hello1@gmail.com\",\r\n        \"phone\": \"98010899233\",\r\n        \"role\": \"USER\",\r\n        \"userType\": \"NEW_USER\",\r\n        \"pinCode\": \"842002\",\r\n        \"passwordHash\":\"hello1@54321\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:7000/users"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:7000/user-activity/metrics/1",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7000/user-activity/metrics/1"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:7000/user-activity/is-flagged/1",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7000/user-activity/is-flagged/1"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:7000/user-buying-pattern/recommended-productId?zonalId=1&productId=1&date=2025-01-01",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/user-buying-pattern/recommended-productId?zonalId=1&productId=1&date=2025-01-01",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"user-buying-pattern",
+								"recommended-productId"
+							],
+							"query": [
+								{
+									"key": "zonalId",
+									"value": "1"
+								},
+								{
+									"key": "productId",
+									"value": "1"
+								},
+								{
+									"key": "date",
+									"value": "2025-01-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:6000/reward-bank/update/rewards?userId=7&field=RUPEEPOINT&toBeUpdated=30",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6000/reward-bank/update/rewards?userId=7&field=RUPEEPOINT&toBeUpdated=30",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"reward-bank",
+								"update",
+								"rewards"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "7"
+								},
+								{
+									"key": "field",
+									"value": "RUPEEPOINT"
+								},
+								{
+									"key": "toBeUpdated",
+									"value": "30"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create address",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"addressLine\":\"Tarulia\",\r\n    \"city\":\"KOL\",\r\n    \"state\":\"br\",\r\n    \"postalCode\":\"700102\",\r\n    \"isDefault\":false,\r\n    \"type\":\"BILLING\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:7000/address/id/1"
+					},
+					"response": []
+				},
+				{
+					"name": "create user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"name\": \"saurav\",\r\n        \"email\": \"saurav2@gmail.com\",\r\n        \"phone\": \"9801089238\",\r\n        \"role\": \"USER\",\r\n        \"userType\": \"NEW_USER\",\r\n        \"pinCode\": \"700102\",\r\n        \"passwordHash\":\"saurav2@54321\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:7000/users"
+					},
+					"response": []
+				},
+				{
+					"name": "user reward bank",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/reward-bank/user?userId=4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"reward-bank",
+								"user"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "order of user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7000/orders/userId/3"
+					},
+					"response": []
+				},
+				{
+					"name": "update addres status by field",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/address/update/status/1/1?field=DEFAULT&toBeUpdated=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"address",
+								"update",
+								"status",
+								"1",
+								"1"
+							],
+							"query": [
+								{
+									"key": "field",
+									"value": "DEFAULT"
+								},
+								{
+									"key": "toBeUpdated",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "address by user id",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7000/address/user/id/3"
+					},
+					"response": []
+				},
+				{
+					"name": "get promo of product by prod id",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/promotions/by?field=PROMOCODE&findBy=HELLO20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"promotions",
+								"by"
+							],
+							"query": [
+								{
+									"key": "field",
+									"value": "PROMOCODE"
+								},
+								{
+									"key": "findBy",
+									"value": "HELLO20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get product variant of aproduct",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7000/products/variant/id/3"
+					},
+					"response": []
+				},
+				{
+					"name": "filter option for user  by feign",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": 5,\r\n        \"color\": \"GREEN\",\r\n        \"price\": 199.0,\r\n        \"discountedPrice\": 99.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889638/product_img/file_rvfsmp.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 2,\r\n            \"name\": \"prod2\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"genre\": \"MEN\",\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": 0,\r\n            \"rating\": null,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [],\r\n            \"ocassions\": \"FORMAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T16:33:41.858535\",\r\n            \"updatedAt\": \"2025-02-03T00:00:00.219039\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 7,\r\n                \"size\": \"L\",\r\n                \"additionalPrice\": 309.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 10,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ],\r\n        \"saleCount\": null,\r\n        \"monthSaleCount\": null,\r\n        \"weekSaleCount\": null\r\n    },\r\n    {\r\n        \"id\": 2,\r\n        \"color\": \"RED\",\r\n        \"price\": 199.0,\r\n        \"discountedPrice\": 99.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880516/product_img/file_xiu8yh.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880529/product_img/file_kyrpyh.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880543/product_img/file_ku72dt.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 1,\r\n            \"name\": \"prod1\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"genre\": \"WOMEN\",\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": 0,\r\n            \"rating\": 4.0,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [],\r\n            \"ocassions\": \"CASUAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T13:58:36.731693\",\r\n            \"updatedAt\": \"2025-02-03T00:00:00.155945\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 3,\r\n                \"size\": \"S\",\r\n                \"additionalPrice\": 109.0,\r\n                \"additionalDiscountedPrice\": 100.0,\r\n                \"stock\": 5,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            },\r\n            {\r\n                \"id\": 4,\r\n                \"size\": \"L\",\r\n                \"additionalPrice\": 309.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 9,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ],\r\n        \"saleCount\": null,\r\n        \"monthSaleCount\": null,\r\n        \"weekSaleCount\": null\r\n    },\r\n    {\r\n        \"id\": 3,\r\n        \"color\": \"BLUE\",\r\n        \"price\": 199.0,\r\n        \"discountedPrice\": 99.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889481/product_img/file_pnn4ct.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889495/product_img/file_x6thsl.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 2,\r\n            \"name\": \"prod2\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"genre\": \"MEN\",\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": 0,\r\n            \"rating\": null,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [],\r\n            \"ocassions\": \"FORMAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T16:33:41.858535\",\r\n            \"updatedAt\": \"2025-02-03T00:00:00.219039\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 5,\r\n                \"size\": \"L\",\r\n                \"additionalPrice\": 309.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 10,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ],\r\n        \"saleCount\": null,\r\n        \"monthSaleCount\": null,\r\n        \"weekSaleCount\": null\r\n    },\r\n    {\r\n        \"id\": 1,\r\n        \"color\": \"LAVENDER\",\r\n        \"price\": 299.0,\r\n        \"discountedPrice\": 199.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880455/product_img/file_g8n1mk.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880468/product_img/file_tmab0w.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880483/product_img/file_aswlan.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 1,\r\n            \"name\": \"prod1\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"genre\": \"WOMEN\",\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": 0,\r\n            \"rating\": 4.0,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [],\r\n            \"ocassions\": \"CASUAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T13:58:36.731693\",\r\n            \"updatedAt\": \"2025-02-03T00:00:00.155945\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 1,\r\n                \"size\": \"M\",\r\n                \"additionalPrice\": 209.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 8,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            },\r\n            {\r\n                \"id\": 2,\r\n                \"size\": \"S\",\r\n                \"additionalPrice\": 109.0,\r\n                \"additionalDiscountedPrice\": 100.0,\r\n                \"stock\": 10,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ],\r\n        \"saleCount\": null,\r\n        \"monthSaleCount\": null,\r\n        \"weekSaleCount\": null\r\n    },\r\n    {\r\n        \"id\": 6,\r\n        \"color\": \"OLIVE\",\r\n        \"price\": 199.0,\r\n        \"discountedPrice\": 99.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889655/product_img/file_lacoyk.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 2,\r\n            \"name\": \"prod2\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"genre\": \"MEN\",\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": 0,\r\n            \"rating\": null,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [{\"type\":\"tag1\"}],\r\n            \"ocassions\": \"FORMAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T16:33:41.858535\",\r\n            \"updatedAt\": \"2025-02-03T00:00:00.219039\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 8,\r\n                \"size\": \"L\",\r\n                \"additionalPrice\": 309.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 3,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ],\r\n        \"saleCount\": null,\r\n        \"monthSaleCount\": null,\r\n        \"weekSaleCount\": null\r\n    },\r\n    {\r\n        \"id\": 4,\r\n        \"color\": \"BLACK\",\r\n        \"price\": 199.0,\r\n        \"discountedPrice\": 99.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889502/product_img/file_i2ik5s.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889513/product_img/file_wzp78n.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 2,\r\n            \"name\": \"prod2\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"genre\": \"MEN\",\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": 0,\r\n            \"rating\": null,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [],\r\n            \"ocassions\": \"FORMAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T16:33:41.858535\",\r\n            \"updatedAt\": \"2025-02-03T00:00:00.219039\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 6,\r\n                \"size\": \"L\",\r\n                \"additionalPrice\": 309.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 6,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ],\r\n        \"saleCount\": null,\r\n        \"monthSaleCount\": null,\r\n        \"weekSaleCount\": null\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:7000/products/variant/filter/option"
+					},
+					"response": []
+				},
+				{
+					"name": "sellers of  a zone by feign",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/sellers/zone?zonalId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"sellers",
+								"zone"
+							],
+							"query": [
+								{
+									"key": "zonalId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sellerService",
+			"item": [
+				{
+					"name": "CREATE PRODUCT VARIANTS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"color\":\"WHITE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/product-variants/id/4"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"prod2\",\r\n    \"description\":\"wotht buying product\",\r\n    \"zonalId\":1,\r\n    \"ocassions\":\"FORMAL\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/products/id/5?category=category1&brand=brand1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"products",
+								"id",
+								"5"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "category1"
+								},
+								{
+									"key": "brand",
+									"value": "brand1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE PRODUCT VARIANTS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"color\":\"OLIVE\",\r\n    \"price\":199,\r\n    \"discountedPrice\":99\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/product-variants/id/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Product size creation by variant id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"size\":\"L\",\r\n    \"additionalPrice\":309,\r\n    \"additionalDiscountedPrice\":200,\r\n    \"stock\":10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/product-sizes/id/6"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/products"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8000/products/sorted",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/products/sorted"
+					},
+					"response": []
+				},
+				{
+					"name": "sort productSize on the basis of price",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/product-sizes/sorted/asc"
+					},
+					"response": []
+				},
+				{
+					"name": "sort productSize on the basis of price",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/product-sizes/sorted?field=DESC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"product-sizes",
+								"sorted"
+							],
+							"query": [
+								{
+									"key": "field",
+									"value": "DESC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/products"
+					},
+					"response": []
+				},
+				{
+					"name": "Get product By Pincode",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/products/pincode?pincode=842002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"products",
+								"pincode"
+							],
+							"query": [
+								{
+									"key": "pincode",
+									"value": "842002"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get productId by pincode",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/products/product-id/pincode?pincode=842002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"products",
+								"product-id",
+								"pincode"
+							],
+							"query": [
+								{
+									"key": "pincode",
+									"value": "842002"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter ProductSize By fields",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n    \"ratingAbove\":2,\r\n\r\n    \"productsList\": [\r\n    1,\r\n    2,\r\n    3,\r\n    4,\r\n    5\r\n]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/product-sizes/filter"
+					},
+					"response": []
+				},
+				{
+					"name": "sort productSizes by price",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": 1,\r\n        \"size\": \"M\",\r\n        \"additionalPrice\": 299.0,\r\n        \"additionalDiscountedPrice\": 199.0,\r\n        \"stock\": 10,\r\n        \"isAvailable\": true,\r\n        \"isActive\": false\r\n    },\r\n    {\r\n        \"id\": 2,\r\n        \"size\": \"L\",\r\n        \"additionalPrice\": 399.0,\r\n        \"additionalDiscountedPrice\": 299.0,\r\n        \"stock\": 10,\r\n        \"isAvailable\": true,\r\n        \"isActive\": false\r\n    },\r\n    {\r\n        \"id\": 3,\r\n        \"size\": \"S\",\r\n        \"additionalPrice\": 199.0,\r\n        \"additionalDiscountedPrice\": 99.0,\r\n        \"stock\": 10,\r\n        \"isAvailable\": true,\r\n        \"isActive\": false\r\n    },\r\n    {\r\n        \"id\": 7,\r\n        \"size\": \"L\",\r\n        \"additionalPrice\": 1399.0,\r\n        \"additionalDiscountedPrice\": 1299.0,\r\n        \"stock\": 10,\r\n        \"isAvailable\": true,\r\n        \"isActive\": false\r\n    },\r\n    {\r\n        \"id\": 8,\r\n        \"size\": \"M\",\r\n        \"additionalPrice\": 2399.0,\r\n        \"additionalDiscountedPrice\": 2299.0,\r\n        \"stock\": 10,\r\n        \"isAvailable\": true,\r\n        \"isActive\": false\r\n    },\r\n    {\r\n        \"id\": 9,\r\n        \"size\": \"S\",\r\n        \"additionalPrice\": 699.0,\r\n        \"additionalDiscountedPrice\": 599.0,\r\n        \"stock\": 10,\r\n        \"isAvailable\": true,\r\n        \"isActive\": false\r\n    },\r\n    {\r\n        \"id\": 35,\r\n        \"size\": \"M\",\r\n        \"additionalPrice\": 909.0,\r\n        \"additionalDiscountedPrice\": 900.0,\r\n        \"stock\": 10,\r\n        \"isAvailable\": true,\r\n        \"isActive\": false\r\n    },\r\n    {\r\n        \"id\": 36,\r\n        \"size\": \"L\",\r\n        \"additionalPrice\": 609.0,\r\n        \"additionalDiscountedPrice\": 500.0,\r\n        \"stock\": 10,\r\n        \"isAvailable\": true,\r\n        \"isActive\": false\r\n    },\r\n    {\r\n        \"id\": 37,\r\n        \"size\": \"XXL\",\r\n        \"additionalPrice\": 309.0,\r\n        \"additionalDiscountedPrice\": 200.0,\r\n        \"stock\": 10,\r\n        \"isAvailable\": true,\r\n        \"isActive\": false\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/product-sizes/sorted?field=ASC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"product-sizes",
+								"sorted"
+							],
+							"query": [
+								{
+									"key": "field",
+									"value": "ASC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/products"
+					},
+					"response": []
+				},
+				{
+					"name": "productSize by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/product-sizes/product-sizeId/2"
+					},
+					"response": []
+				},
+				{
+					"name": "variant image",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/product-variants"
+					},
+					"response": []
+				},
+				{
+					"name": "variant image upload",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/skspl/OneDrive/Desktop/screenshots/Screenshot_1690194111.png"
+								},
+								{
+									"key": "variantId",
+									"value": "6",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8000/product-variants/update/variant/image"
+					},
+					"response": []
+				},
+				{
+					"name": "get all variants",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/product-variants"
+					},
+					"response": []
+				},
+				{
+					"name": "update variant price",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/product-variants/update/price/id/6?price=204&discountedPrice=198",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"product-variants",
+								"update",
+								"price",
+								"id",
+								"6"
+							],
+							"query": [
+								{
+									"key": "price",
+									"value": "204"
+								},
+								{
+									"key": "discountedPrice",
+									"value": "198"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update zone of product",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/products/update/zone/3?zonalId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"products",
+								"update",
+								"zone",
+								"3"
+							],
+							"query": [
+								{
+									"key": "zonalId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get product variant of zone",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/product-variants/zone?zonalId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"product-variants",
+								"zone"
+							],
+							"query": [
+								{
+									"key": "zonalId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8000/categories",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/categories"
+					},
+					"response": []
+				},
+				{
+					"name": "get all categories",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/categories"
+					},
+					"response": []
+				},
+				{
+					"name": "create category",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"category5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/categories"
+					},
+					"response": []
+				},
+				{
+					"name": "create seller",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"name\": \"seller4\",\r\n    \"email\": \"seller4@gmail.com\",\r\n    \"phone\": \"980708934\",\r\n    \"gstin\": \"XYZ_!@#$4\",\r\n    \"pinCode\": \"700102\",\r\n    \"promotionUsage\": {},\r\n    \"isVerified\": true,\r\n    \"role\": \"SELLER\",\r\n    \"deliveryCountOfDay\": 0,\r\n    \"deliveryInHand\": 0,\r\n    \"userType\": \"NEW_SELLER\",\r\n    \"isActive\": true,\r\n    \"passwordHash\":\"12345Saurav\"\r\n   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/sellers"
+					},
+					"response": []
+				},
+				{
+					"name": "create brand",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"brand3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/brands"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"prod1\",\r\n    \"description\":\"wotht buying product\",\r\n    \"zonalId\":1,\r\n    \"ocassions\":\"CASUAL\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/products/id/5?category=category1&brand=brand1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"products",
+								"id",
+								"5"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "category1"
+								},
+								{
+									"key": "brand",
+									"value": "brand1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get product variant by id",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/product-variants/variant-id/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Product size creation by variant id",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"size\":\"L\",\r\n    \"additionalPrice\":309,\r\n    \"additionalDiscountedPrice\":200,\r\n    \"stock\":10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/product-sizes/id/6"
+					},
+					"response": []
+				},
+				{
+					"name": "get all sellers",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/sellers"
+					},
+					"response": []
+				},
+				{
+					"name": "update genre",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"url": "http://localhost:8000/products/update/genre/3/MEN"
+					},
+					"response": []
+				},
+				{
+					"name": "review by id",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rating\":3,\r\n    \"reviewText\":\"Worth buying product\",\r\n    \"userId\":6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/reviews/id/1"
+					},
+					"response": []
+				},
+				{
+					"name": "sort in asc order",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": 1,\r\n        \"color\": \"LAVENDER\",\r\n        \"price\": 299.0,\r\n        \"discountedPrice\": 199.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880455/product_img/file_g8n1mk.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880468/product_img/file_tmab0w.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880483/product_img/file_aswlan.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 1,\r\n            \"name\": \"prod1\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": null,\r\n            \"rating\": 4.0,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [],\r\n            \"ocassions\": \"CASUAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T13:58:36.731693\",\r\n            \"updatedAt\": \"2025-01-29T10:38:05.783292\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 1,\r\n                \"size\": \"M\",\r\n                \"additionalPrice\": 209.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 10,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            },\r\n            {\r\n                \"id\": 2,\r\n                \"size\": \"S\",\r\n                \"additionalPrice\": 109.0,\r\n                \"additionalDiscountedPrice\": 100.0,\r\n                \"stock\": 10,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"id\": 2,\r\n        \"color\": \"RED\",\r\n        \"price\": 199.0,\r\n        \"discountedPrice\": 99.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880516/product_img/file_xiu8yh.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880529/product_img/file_kyrpyh.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880543/product_img/file_ku72dt.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 1,\r\n            \"name\": \"prod1\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": null,\r\n            \"rating\": 4.0,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [],\r\n            \"ocassions\": \"CASUAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T13:58:36.731693\",\r\n            \"updatedAt\": \"2025-01-29T10:38:05.783292\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 3,\r\n                \"size\": \"S\",\r\n                \"additionalPrice\": 109.0,\r\n                \"additionalDiscountedPrice\": 100.0,\r\n                \"stock\": 5,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            },\r\n            {\r\n                \"id\": 4,\r\n                \"size\": \"L\",\r\n                \"additionalPrice\": 309.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 10,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"id\": 3,\r\n        \"color\": \"BLUE\",\r\n        \"price\": 199.0,\r\n        \"discountedPrice\": 99.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889481/product_img/file_pnn4ct.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889495/product_img/file_x6thsl.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 2,\r\n            \"name\": \"prod2\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": null,\r\n            \"rating\": null,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [],\r\n            \"ocassions\": \"FORMAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T16:33:41.858535\",\r\n            \"updatedAt\": \"2025-01-26T16:33:41.861539\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 5,\r\n                \"size\": \"L\",\r\n                \"additionalPrice\": 309.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 10,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"id\": 4,\r\n        \"color\": \"BLACK\",\r\n        \"price\": 199.0,\r\n        \"discountedPrice\": 99.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889502/product_img/file_i2ik5s.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889513/product_img/file_wzp78n.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 2,\r\n            \"name\": \"prod2\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": null,\r\n            \"rating\": null,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [],\r\n            \"ocassions\": \"FORMAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T16:33:41.858535\",\r\n            \"updatedAt\": \"2025-01-26T16:33:41.861539\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 6,\r\n                \"size\": \"L\",\r\n                \"additionalPrice\": 309.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 6,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"id\": 5,\r\n        \"color\": \"GREEN\",\r\n        \"price\": 199.0,\r\n        \"discountedPrice\": 99.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889638/product_img/file_rvfsmp.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 2,\r\n            \"name\": \"prod2\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": null,\r\n            \"rating\": null,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [],\r\n            \"ocassions\": \"FORMAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T16:33:41.858535\",\r\n            \"updatedAt\": \"2025-01-26T16:33:41.861539\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 7,\r\n                \"size\": \"L\",\r\n                \"additionalPrice\": 309.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 10,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"id\": 6,\r\n        \"color\": \"OLIVE\",\r\n        \"price\": 199.0,\r\n        \"discountedPrice\": 99.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889655/product_img/file_lacoyk.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 2,\r\n            \"name\": \"prod2\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": null,\r\n            \"rating\": null,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [],\r\n            \"ocassions\": \"FORMAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T16:33:41.858535\",\r\n            \"updatedAt\": \"2025-01-26T16:33:41.861539\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 8,\r\n                \"size\": \"L\",\r\n                \"additionalPrice\": 309.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 4,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ]\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/product-variants/sorted?field=ASC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"product-variants",
+								"sorted"
+							],
+							"query": [
+								{
+									"key": "field",
+									"value": "ASC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filtering of product",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \r\n      \"size\":[\"M\",\"XL\",\"L\"],\r\n      \r\n    \"productVariantList\":[\r\n    {\r\n        \"id\": 1,\r\n        \"color\": \"LAVENDER\",\r\n        \"price\": 299.0,\r\n        \"discountedPrice\": 199.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880455/product_img/file_g8n1mk.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880468/product_img/file_tmab0w.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880483/product_img/file_aswlan.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 1,\r\n            \"name\": \"prod1\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"genre\": \"WOMEN\",\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": 0,\r\n            \"rating\": 4.0,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [{\"type\":\"FORMAL\"}],\r\n            \"ocassions\": \"CASUAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T13:58:36.731693\",\r\n            \"updatedAt\": \"2025-02-03T00:00:00.155945\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 1,\r\n                \"size\": \"M\",\r\n                \"additionalPrice\": 209.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 8,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            },\r\n            {\r\n                \"id\": 2,\r\n                \"size\": \"S\",\r\n                \"additionalPrice\": 109.0,\r\n                \"additionalDiscountedPrice\": 100.0,\r\n                \"stock\": 10,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"id\": 2,\r\n        \"color\": \"RED\",\r\n        \"price\": 199.0,\r\n        \"discountedPrice\": 99.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880516/product_img/file_xiu8yh.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880529/product_img/file_kyrpyh.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880543/product_img/file_ku72dt.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 1,\r\n            \"name\": \"prod1\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"genre\": \"WOMEN\",\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": 0,\r\n            \"rating\": 4.0,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [],\r\n            \"ocassions\": \"CASUAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T13:58:36.731693\",\r\n            \"updatedAt\": \"2025-02-03T00:00:00.155945\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 3,\r\n                \"size\": \"S\",\r\n                \"additionalPrice\": 109.0,\r\n                \"additionalDiscountedPrice\": 100.0,\r\n                \"stock\": 5,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            },\r\n            {\r\n                \"id\": 4,\r\n                \"size\": \"L\",\r\n                \"additionalPrice\": 309.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 9,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"id\": 3,\r\n        \"color\": \"BLUE\",\r\n        \"price\": 199.0,\r\n        \"discountedPrice\": 99.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889481/product_img/file_pnn4ct.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889495/product_img/file_x6thsl.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 2,\r\n            \"name\": \"prod2\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"genre\": \"MEN\",\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": 0,\r\n            \"rating\": null,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [],\r\n            \"ocassions\": \"FORMAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T16:33:41.858535\",\r\n            \"updatedAt\": \"2025-02-03T00:00:00.219039\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 5,\r\n                \"size\": \"L\",\r\n                \"additionalPrice\": 309.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 10,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"id\": 4,\r\n        \"color\": \"BLACK\",\r\n        \"price\": 199.0,\r\n        \"discountedPrice\": 99.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889502/product_img/file_i2ik5s.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889513/product_img/file_wzp78n.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 2,\r\n            \"name\": \"prod2\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"genre\": \"MEN\",\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": 0,\r\n            \"rating\": null,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [],\r\n            \"ocassions\": \"FORMAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T16:33:41.858535\",\r\n            \"updatedAt\": \"2025-02-03T00:00:00.219039\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 6,\r\n                \"size\": \"L\",\r\n                \"additionalPrice\": 309.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 6,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"id\": 5,\r\n        \"color\": \"GREEN\",\r\n        \"price\": 199.0,\r\n        \"discountedPrice\": 99.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889638/product_img/file_rvfsmp.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 2,\r\n            \"name\": \"prod2\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"genre\": \"MEN\",\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": 0,\r\n            \"rating\": null,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [],\r\n            \"ocassions\": \"FORMAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T16:33:41.858535\",\r\n            \"updatedAt\": \"2025-02-03T00:00:00.219039\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 7,\r\n                \"size\": \"L\",\r\n                \"additionalPrice\": 309.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 10,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"id\": 6,\r\n        \"color\": \"OLIVE\",\r\n        \"price\": 199.0,\r\n        \"discountedPrice\": 99.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889655/product_img/file_lacoyk.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 2,\r\n            \"name\": \"prod2\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"genre\": \"MEN\",\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": 0,\r\n            \"rating\": null,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [{\"type\":\"CASUAL\",\"slug\":\"NEW\"}],\r\n            \"ocassions\": \"FORMAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T16:33:41.858535\",\r\n            \"updatedAt\": \"2025-02-03T00:00:00.219039\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 8,\r\n                \"size\": \"XL\",\r\n                \"additionalPrice\": 309.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 3,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ]\r\n    }\r\n]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/product-variants/filter"
+					},
+					"response": []
+				},
+				{
+					"name": "get all the filter options",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": 5,\r\n        \"color\": \"GREEN\",\r\n        \"price\": 199.0,\r\n        \"discountedPrice\": 99.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889638/product_img/file_rvfsmp.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 2,\r\n            \"name\": \"prod2\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"genre\": \"MEN\",\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": 0,\r\n            \"rating\": null,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [],\r\n            \"ocassions\": \"FORMAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T16:33:41.858535\",\r\n            \"updatedAt\": \"2025-02-03T00:00:00.219039\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 7,\r\n                \"size\": \"L\",\r\n                \"additionalPrice\": 309.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 10,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ],\r\n        \"saleCount\": null,\r\n        \"monthSaleCount\": null,\r\n        \"weekSaleCount\": null\r\n    },\r\n    {\r\n        \"id\": 2,\r\n        \"color\": \"RED\",\r\n        \"price\": 199.0,\r\n        \"discountedPrice\": 99.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880516/product_img/file_xiu8yh.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880529/product_img/file_kyrpyh.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880543/product_img/file_ku72dt.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 1,\r\n            \"name\": \"prod1\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"genre\": \"WOMEN\",\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": 0,\r\n            \"rating\": 4.0,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [],\r\n            \"ocassions\": \"CASUAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T13:58:36.731693\",\r\n            \"updatedAt\": \"2025-02-03T00:00:00.155945\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 3,\r\n                \"size\": \"S\",\r\n                \"additionalPrice\": 109.0,\r\n                \"additionalDiscountedPrice\": 100.0,\r\n                \"stock\": 5,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            },\r\n            {\r\n                \"id\": 4,\r\n                \"size\": \"L\",\r\n                \"additionalPrice\": 309.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 9,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ],\r\n        \"saleCount\": null,\r\n        \"monthSaleCount\": null,\r\n        \"weekSaleCount\": null\r\n    },\r\n    {\r\n        \"id\": 3,\r\n        \"color\": \"BLUE\",\r\n        \"price\": 199.0,\r\n        \"discountedPrice\": 99.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889481/product_img/file_pnn4ct.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889495/product_img/file_x6thsl.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 2,\r\n            \"name\": \"prod2\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"genre\": \"MEN\",\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": 0,\r\n            \"rating\": null,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [],\r\n            \"ocassions\": \"FORMAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T16:33:41.858535\",\r\n            \"updatedAt\": \"2025-02-03T00:00:00.219039\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 5,\r\n                \"size\": \"L\",\r\n                \"additionalPrice\": 309.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 10,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ],\r\n        \"saleCount\": null,\r\n        \"monthSaleCount\": null,\r\n        \"weekSaleCount\": null\r\n    },\r\n    {\r\n        \"id\": 1,\r\n        \"color\": \"LAVENDER\",\r\n        \"price\": 299.0,\r\n        \"discountedPrice\": 199.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880455/product_img/file_g8n1mk.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880468/product_img/file_tmab0w.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737880483/product_img/file_aswlan.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 1,\r\n            \"name\": \"prod1\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"genre\": \"WOMEN\",\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": 0,\r\n            \"rating\": 4.0,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [],\r\n            \"ocassions\": \"CASUAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T13:58:36.731693\",\r\n            \"updatedAt\": \"2025-02-03T00:00:00.155945\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 1,\r\n                \"size\": \"M\",\r\n                \"additionalPrice\": 209.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 8,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            },\r\n            {\r\n                \"id\": 2,\r\n                \"size\": \"S\",\r\n                \"additionalPrice\": 109.0,\r\n                \"additionalDiscountedPrice\": 100.0,\r\n                \"stock\": 10,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ],\r\n        \"saleCount\": null,\r\n        \"monthSaleCount\": null,\r\n        \"weekSaleCount\": null\r\n    },\r\n    {\r\n        \"id\": 6,\r\n        \"color\": \"OLIVE\",\r\n        \"price\": 199.0,\r\n        \"discountedPrice\": 99.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889655/product_img/file_lacoyk.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 2,\r\n            \"name\": \"prod2\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"genre\": \"MEN\",\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": 0,\r\n            \"rating\": null,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [],\r\n            \"ocassions\": \"FORMAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T16:33:41.858535\",\r\n            \"updatedAt\": \"2025-02-03T00:00:00.219039\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 8,\r\n                \"size\": \"L\",\r\n                \"additionalPrice\": 309.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 3,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ],\r\n        \"saleCount\": null,\r\n        \"monthSaleCount\": null,\r\n        \"weekSaleCount\": null\r\n    },\r\n    {\r\n        \"id\": 4,\r\n        \"color\": \"BLACK\",\r\n        \"price\": 199.0,\r\n        \"discountedPrice\": 99.0,\r\n        \"imageUrl\": [\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889502/product_img/file_i2ik5s.png\",\r\n            \"http://res.cloudinary.com/dq2ajr3ih/image/upload/v1737889513/product_img/file_wzp78n.png\"\r\n        ],\r\n        \"isAvailable\": true,\r\n        \"isActive\": null,\r\n        \"product\": {\r\n            \"id\": 2,\r\n            \"name\": \"prod2\",\r\n            \"description\": \"wotht buying product\",\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"category1\"\r\n            },\r\n            \"genre\": \"MEN\",\r\n            \"brand\": {\r\n                \"id\": 1,\r\n                \"name\": \"brand1\"\r\n            },\r\n            \"seller\": {\r\n                \"id\": 5,\r\n                \"name\": \"seller1\",\r\n                \"email\": \"seller1@gmail.com\",\r\n                \"phone\": \"9807089236\",\r\n                \"gstin\": \"XYZ_!@#$%\",\r\n                \"pinCode\": \"700102\",\r\n                \"address\": [],\r\n                \"promotionUsage\": {},\r\n                \"isVerified\": true,\r\n                \"role\": \"SELLER\",\r\n                \"deliveryCountOfDay\": 0,\r\n                \"deliveryInHand\": 0,\r\n                \"userType\": \"NEW_SELLER\",\r\n                \"isActive\": true,\r\n                \"createdAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"updatedAt\": \"2025-01-26T13:51:50.665471\",\r\n                \"available\": false\r\n            },\r\n            \"zonalId\": 1,\r\n            \"saleCount\": null,\r\n            \"monthSaleCount\": null,\r\n            \"weekSaleCount\": 0,\r\n            \"rating\": null,\r\n            \"isPriceDependOnSize\": false,\r\n            \"isReturnable\": null,\r\n            \"returnPolicyValidTill\": null,\r\n            \"isReplaceable\": null,\r\n            \"replacePolicyValidTill\": null,\r\n            \"tags\": [],\r\n            \"ocassions\": \"FORMAL\",\r\n            \"isActive\": true,\r\n            \"createdAt\": \"2025-01-26T16:33:41.858535\",\r\n            \"updatedAt\": \"2025-02-03T00:00:00.219039\"\r\n        },\r\n        \"sizes\": [\r\n            {\r\n                \"id\": 6,\r\n                \"size\": \"L\",\r\n                \"additionalPrice\": 309.0,\r\n                \"additionalDiscountedPrice\": 200.0,\r\n                \"stock\": 6,\r\n                \"isAvailable\": true,\r\n                \"isActive\": false\r\n            }\r\n        ],\r\n        \"saleCount\": null,\r\n        \"monthSaleCount\": null,\r\n        \"weekSaleCount\": null\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/product-variants/filter/option"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "promotionService_v1",
+			"item": [
+				{
+					"name": "Get All promotions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5000/promotions/all"
+					},
+					"response": []
+				},
+				{
+					"name": "update promo code for products",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/promotions/update/applicable-products?promoCode=FLAT10&field=ADD&productId=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"promotions",
+								"update",
+								"applicable-products"
+							],
+							"query": [
+								{
+									"key": "promoCode",
+									"value": "FLAT10"
+								},
+								{
+									"key": "field",
+									"value": "ADD"
+								},
+								{
+									"key": "productId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create promotions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"creatorId\":5,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"GET DISCOUNT\",\r\n    \"description\":\"ALL TIME HIGH DISCOUNTS\",\r\n    \"promoCode\":\"HELLO10\",\r\n    \"type\":\"PERCENTAGE\",\r\n     \"applicableProducts\":[1],\r\n    \"discountValue\":10,\r\n    \"maxUsageOfPromo\":100,\r\n    \"startDate\":\"2025-01-29T00:00:00\",\r\n    \"endDate\":\"2025-01-30T23:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/promotions"
+					},
+					"response": []
+				},
+				{
+					"name": "activate promocode",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/promotions/update/promotion-status?promoCode=FLAT90&field=ACTIVATION&toBeUpdated=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"promotions",
+								"update",
+								"promotion-status"
+							],
+							"query": [
+								{
+									"key": "promoCode",
+									"value": "FLAT90"
+								},
+								{
+									"key": "field",
+									"value": "ACTIVATION"
+								},
+								{
+									"key": "toBeUpdated",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove promotions",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/promotions/remove?promoCode=FLAT20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"promotions",
+								"remove"
+							],
+							"query": [
+								{
+									"key": "promoCode",
+									"value": "FLAT20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create promotions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"creatorId\":1,\r\n    \"creatorRole\":\"SELLER\",\r\n    \"title\":\"GET DISCOUNT\",\r\n    \"description\":\"ALL TIME HIGH DISCOUNTS\",\r\n    \"promoCode\":\"FLAT30\",\r\n    \"type\":\"PERCENTAGE\",\r\n    \"discountValue\":30,\r\n    \"maxUsageOfPromo\":100,\r\n    \"startDate\":\"2025-01-03T00:00:00\",\r\n    \"endDate\":\"2025-01-04T23:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/promotions"
+					},
+					"response": []
+				},
+				{
+					"name": "activate promo by field",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/promotions/update/promotion-status?promoCode=HELLO20&field=ACTIVATION&toBeUpdated=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"promotions",
+								"update",
+								"promotion-status"
+							],
+							"query": [
+								{
+									"key": "promoCode",
+									"value": "HELLO20"
+								},
+								{
+									"key": "field",
+									"value": "ACTIVATION"
+								},
+								{
+									"key": "toBeUpdated",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get promo by field",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/promotions/by?field=PROMOCODE&findBy=HELLO20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"promotions",
+								"by"
+							],
+							"query": [
+								{
+									"key": "field",
+									"value": "PROMOCODE"
+								},
+								{
+									"key": "findBy",
+									"value": "HELLO20"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "paymentservice_v1",
+			"item": [
+				{
+					"name": "create payment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"orderId\":1,\r\n    \"userId\":1,\r\n    \"gateway\":\"justPay\",\r\n    \"transactionId\":\"vgfhh_xyxzazzpp\",\r\n    \"amount\":1999,\r\n    \"currency\":\"INR\",\r\n    \"status\":\"SUCCESS\",\r\n    \"paymentMethod\":\"UPI\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:6000/payments"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all payments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:6000/payments"
+					},
+					"response": []
+				},
+				{
+					"name": "get payment by transaction id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:6000/payments/transaction/vgfhh_xyxzazzpp"
+					},
+					"response": []
+				},
+				{
+					"name": "get all reward bank",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:6000/reward-bank/all"
+					},
+					"response": []
+				},
+				{
+					"name": "get reward bank by user id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6000/reward-bank/user?userId=7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"reward-bank",
+								"user"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update vouchers of reward bank",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6000/reward-bank/update/voucher?userId=7&field=REMOVE&toBeUpdated=FLAT400",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"reward-bank",
+								"update",
+								"voucher"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "7"
+								},
+								{
+									"key": "field",
+									"value": "REMOVE"
+								},
+								{
+									"key": "toBeUpdated",
+									"value": "FLAT400"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update promos of bank reward",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6000/reward-bank/update/promo-code?userId=7&field=ADD&toBeUpdated=PRO200",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"reward-bank",
+								"update",
+								"promo-code"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "7"
+								},
+								{
+									"key": "field",
+									"value": "ADD"
+								},
+								{
+									"key": "toBeUpdated",
+									"value": "PRO200"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "deliveryservice_v1",
+			"item": [
+				{
+					"name": "Zone creation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"zone\":\"BR_MUZ_Zone1\",\r\n     \"state\":\"Bihar\",\r\n      \"district\":\"Muzaffarpur\",\r\n       \"zonalPincodes\":[\"842000\",\"842001\",\"842002\",\"842003\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9000/postal-zones/creation"
+					},
+					"response": []
+				},
+				{
+					"name": "get pincode of a zone",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/postal-zones/pincodes?district=MUZAFFARPUR&pinCode=842002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"postal-zones",
+								"pincodes"
+							],
+							"query": [
+								{
+									"key": "district",
+									"value": "MUZAFFARPUR"
+								},
+								{
+									"key": "pinCode",
+									"value": "842002"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update zone pincode",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/postal-zones/update/zone?zoneName=BR_MUZ_Zone1&field=add&pinCode=700102",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"postal-zones",
+								"update",
+								"zone"
+							],
+							"query": [
+								{
+									"key": "zoneName",
+									"value": "BR_MUZ_Zone1"
+								},
+								{
+									"key": "field",
+									"value": "add"
+								},
+								{
+									"key": "pinCode",
+									"value": "700102"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get zone by pincode",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/postal-zones/pincode?pinCode=842002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"postal-zones",
+								"pincode"
+							],
+							"query": [
+								{
+									"key": "pinCode",
+									"value": "842002"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Zone creation",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"zone\":\"WB_NT_Zone1\",\r\n     \"state\":\"WEST_BENGAL\",\r\n      \"district\":\"KRISHNAPUR\",\r\n       \"zonalPincodes\":[\"700102\",\"842001\",\"842002\",\"842003\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9000/postal-zones/creation"
 					},
 					"response": []
 				}
@@ -1672,6 +3493,24 @@
 					}
 				},
 				"url": "http://localhost:5000/promotions"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:6000/payments",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderId\":1,\r\n    \"userId\":1,\r\n    \"gateway\":\"justPay\",\r\n    \"transactionId\":\"vgfhh_xyxzazzpp\",\r\n    \"amount\":1999,\r\n    \"currency\":\"INR\",\r\n    \"status\":\"SUCCESS\",\r\n    \"paymentMethod\":\"UPI\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:6000/payments"
 			},
 			"response": []
 		}
