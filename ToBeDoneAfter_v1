@@ -1,0 +1,4 @@
+TO be done after the Complition of V1 
+
+create parent Pom file and it should be used by other Services ,( It makes our work Easy to update all the versions in all the services at a single time)
+create an sql file (import.sql) file to give a mock data , so that it will insert the data while we are running the Application.(Makes our testing Easy)
